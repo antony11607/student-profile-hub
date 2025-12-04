@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -31,9 +30,6 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <Button variant="default" size="sm">
-            Hire Me
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -59,9 +55,6 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <Button variant="default" size="sm" className="w-fit">
-              Hire Me
-            </Button>
           </div>
         </div>
       )}
