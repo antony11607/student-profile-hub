@@ -45,12 +45,12 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16">
         <Link
           to="/"
-          className="text-xl font-bold text-gradient animate-fade-in flex items-center gap-2"
+          className="text-xl font-bold animate-fade-in flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-full hover:bg-secondary/20 transition-all duration-300"
         >
-          <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold">
+          <span className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground text-sm font-bold">
             AX
           </span>
-          Antony Xavier
+          <span className="text-secondary">Antony Xavier</span>
         </Link>
 
         {/* Desktop Menu */}
