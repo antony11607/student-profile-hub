@@ -67,7 +67,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Details Section */}
+
       <section className="py-16">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8">
