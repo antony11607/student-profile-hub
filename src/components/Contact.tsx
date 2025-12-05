@@ -23,50 +23,58 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20">
       <div className="container">
-        <h2 className="section-heading">Get In Touch</h2>
-        <p className="section-subheading">
-          Have a project in mind or want to discuss opportunities? 
-          Feel free to reach out and let's create something amazing together.
+        <h2 className="section-heading animate-fade-in">Get In Touch</h2>
+        <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          Have a question or want to work together? Feel free to reach out!
+          I'm always open to discussing new opportunities and ideas.
         </p>
 
         <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
+          <div className="space-y-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+            
+            <div className="flex items-start gap-4 p-4 bg-card rounded-xl card-hover">
               <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
                 <Mail className="text-accent-foreground" size={22} />
               </div>
               <div>
                 <h4 className="font-semibold mb-1">Email</h4>
-                <p className="text-muted-foreground text-sm">student@university.edu</p>
+                <a href="mailto:antonyxavier@email.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  antonyxavier@email.com
+                </a>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 p-4 bg-card rounded-xl card-hover">
               <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
                 <Phone className="text-accent-foreground" size={22} />
               </div>
               <div>
                 <h4 className="font-semibold mb-1">Phone</h4>
-                <p className="text-muted-foreground text-sm">+91 98765 43210</p>
+                <a href="tel:+919876543210" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  +91 98765 43210
+                </a>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 p-4 bg-card rounded-xl card-hover">
               <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
                 <MapPin className="text-accent-foreground" size={22} />
               </div>
               <div>
                 <h4 className="font-semibold mb-1">Location</h4>
-                <p className="text-muted-foreground text-sm">Bangalore, Karnataka, India</p>
+                <p className="text-muted-foreground text-sm">Chennai, Tamil Nadu, India</p>
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">Your Name</label>
               <input
                 type="text"
-                placeholder="Your Name"
+                id="name"
+                placeholder="Enter your name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
@@ -74,9 +82,11 @@ const Contact = () => {
               />
             </div>
             <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">Your Email</label>
               <input
                 type="email"
-                placeholder="Your Email"
+                id="email"
+                placeholder="Enter your email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
@@ -84,8 +94,10 @@ const Contact = () => {
               />
             </div>
             <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
               <textarea
-                placeholder="Your Message"
+                id="message"
+                placeholder="Your message..."
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}

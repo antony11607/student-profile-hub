@@ -1,84 +1,83 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-
-const projects = [
-  {
-    title: "Smart Home Automation",
-    category: "IoT",
-    description: "An IoT-based home automation system using Arduino and ESP32 with mobile app control.",
-    tags: ["Arduino", "ESP32", "React Native"],
-    color: "bg-secondary/20",
-    borderColor: "border-secondary",
-  },
-  {
-    title: "AI Chatbot Assistant",
-    category: "Machine Learning",
-    description: "NLP-powered chatbot for customer service automation with 95% accuracy.",
-    tags: ["Python", "TensorFlow", "Flask"],
-    color: "bg-pink-100",
-    borderColor: "border-pink-300",
-  },
-  {
-    title: "E-Commerce Platform",
-    category: "Web Development",
-    description: "Full-stack e-commerce solution with payment integration and admin dashboard.",
-    tags: ["React", "Node.js", "MongoDB"],
-    color: "bg-green-100",
-    borderColor: "border-green-300",
-  },
-  {
-    title: "Drone Navigation System",
-    category: "Robotics",
-    description: "Autonomous drone navigation using computer vision and GPS integration.",
-    tags: ["Python", "OpenCV", "ROS"],
-    color: "bg-blue-100",
-    borderColor: "border-blue-300",
-  },
-];
+import { Link } from "react-router-dom";
+import { projects } from "@/data/projects";
 
 const Projects = () => {
   return (
     <section id="projects" className="py-20">
       <div className="container">
-        <h2 className="section-heading">Featured Projects</h2>
-        <p className="section-subheading">
-          A collection of my engineering projects showcasing innovation, 
-          technical skills, and problem-solving abilities across various domains.
+        <h2 className="section-heading animate-fade-in">Featured Projects</h2>
+        <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          A collection of my beginner-level projects showcasing my learning journey
+          in web development and programming.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
-              key={project.title}
-              className={`rounded-2xl p-6 border-2 ${project.borderColor} ${project.color} card-hover animate-fade-in`}
+              key={project.id}
+              className={`group rounded-2xl p-6 border-2 ${project.borderColor} ${project.color} card-hover animate-fade-in overflow-hidden relative`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {project.category}
-              </span>
-              <h3 className="text-xl font-semibold mt-2 mb-3">{project.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-background/80 rounded-full text-xs font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {/* Overflow effect decoration */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-secondary/10 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="flex gap-3">
-                <Button variant="ghost" size="sm">
-                  <Github size={16} className="mr-1" />
-                  Code
-                </Button>
-                <Button variant="ghost" size="sm">
-                  <ExternalLink size={16} className="mr-1" />
-                  Demo
-                </Button>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground bg-background/50 px-2 py-1 rounded-full">
+                    {project.category}
+                  </span>
+                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${project.status === 'Completed' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'}`}>
+                    {project.status}
+                  </span>
+                </div>
+                
+                <h3 className="text-xl font-semibold mt-2 mb-3 group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-background/80 rounded-full text-xs font-medium border border-border/50 group-hover:border-primary/30 transition-colors duration-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2">
+                    {project.github && (
+                      <Button variant="ghost" size="sm" className="group-hover:bg-background/80" asChild>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github size={16} className="mr-1" />
+                          Code
+                        </a>
+                      </Button>
+                    )}
+                    {project.demo && (
+                      <Button variant="ghost" size="sm" className="group-hover:bg-background/80" asChild>
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink size={16} className="mr-1" />
+                          Demo
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                  <Link to={`/project/${project.id}`}>
+                    <Button variant="ghost" size="sm" className="group-hover:text-primary">
+                      Details
+                      <ArrowRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

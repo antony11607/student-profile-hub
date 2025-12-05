@@ -1,8 +1,8 @@
 const stats = [
-  { value: "15+", label: "Projects" },
-  { value: "3", label: "Internships" },
-  { value: "8.5", label: "CGPA" },
-  { value: "500+", label: "GitHub Commits" },
+  { value: "6+", label: "Projects" },
+  { value: "2", label: "Internships" },
+  { value: "9.14", label: "CGPA" },
+  { value: "200+", label: "GitHub Commits" },
 ];
 
 const Stats = () => {
