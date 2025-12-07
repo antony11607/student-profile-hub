@@ -17,7 +17,6 @@ const Index = () => {
       <Stats />
       <Internships />
       <Contact />
-      <Footer />
     </main>
   );
 };
