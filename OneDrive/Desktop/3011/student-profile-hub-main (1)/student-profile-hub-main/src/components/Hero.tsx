@@ -43,11 +43,11 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in" style={{ animationDelay: "0.5s" }}>
             <div className="flex items-center gap-2 text-primary-foreground/80 text-sm bg-primary-foreground/10 rounded-full px-4 py-2">
               <Mail size={16} />
-              <span>antonyxavier@gmail.com</span>
+              <span>antonyxavier@email.com</span>
             </div>
             <div className="flex items-center gap-2 text-primary-foreground/80 text-sm bg-primary-foreground/10 rounded-full px-4 py-2">
               <Phone size={16} />
-              <span>+91 88389 25055</span>
+              <span>+91 98765 43210</span>
             </div>
             <div className="flex items-center gap-2 text-primary-foreground/80 text-sm bg-primary-foreground/10 rounded-full px-4 py-2">
               <MapPin size={16} />
@@ -57,7 +57,7 @@ const Hero = () => {
 
           {/* Social Links */}
           <div className="flex justify-center gap-3 mb-8 animate-fade-in" style={{ animationDelay: "0.55s" }}>
-            <a href="https://github.com/antony11607" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110">
               <Github size={20} />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110">

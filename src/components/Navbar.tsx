@@ -1,59 +1,36 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Home, User, Briefcase, Building, Mail } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { name: "Home", id: "home", icon: Home },
-  { name: "About", id: "about", icon: User },
-  { name: "Projects", id: "projects", icon: Briefcase },
-  { name: "Internships", id: "internships", icon: Building },
-  { name: "Contact", id: "contact", icon: Mail },
+  { name: "Home", href: "/#home", icon: Home },
+  { name: "About", href: "/#about", icon: User },
+  { name: "Projects", href: "/#projects", icon: Briefcase },
+  { name: "Internships", href: "/#internships", icon: Building },
+  { name: "Contact", href: "/#contact", icon: Mail },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      // Update active section based on scroll position
-      if (location.pathname === "/") {
-        const sections = navLinks.map(link => link.id);
-        for (const sectionId of sections.reverse()) {
-          const element = document.getElementById(sectionId);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= 100) {
-              setActiveSection(sectionId);
-              break;
-            }
-          }
-        }
-      }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
+  }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false);
-    
-    if (location.pathname !== "/") {
-      // Navigate to home first, then scroll after navigation
-      navigate("/");
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
+    if (href.startsWith("/#")) {
+      const elementId = href.substring(2);
+      if (location.pathname === "/") {
+        const element = document.getElementById(elementId);
         element?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else {
-      const element = document.getElementById(sectionId);
-      element?.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -61,37 +38,34 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-md shadow-lg border-b border-border"
+          ? "bg-background/95 backdrop-blur-lg shadow-lg border-b border-border/50"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-16">
-        <button
-          onClick={() => scrollToSection("home")}
-          className="text-xl font-bold animate-fade-in flex items-center gap-2 bg-card px-4 py-2 rounded-full hover:bg-muted transition-all duration-300 shadow-sm border border-border"
+        <Link
+          to="/"
+          className="text-xl font-bold animate-fade-in flex items-center gap-2 bg-background px-4 py-2 rounded-full hover:bg-background/90 transition-all duration-300 shadow-sm"
         >
-          <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold">
+          <span className="w-8 h-8 rounded-full bg-background flex items-center justify-center text-primary text-sm font-bold border border-border">
             AX
           </span>
           <span className="text-foreground">Antony Xavier</span>
-        </button>
+        </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-1 bg-card/80 rounded-full p-1.5 backdrop-blur-sm border border-border shadow-sm">
+        <div className="hidden md:flex items-center gap-1 bg-muted/50 rounded-full p-1.5 backdrop-blur-sm">
           {navLinks.map((link, index) => (
-            <button
+            <Link
               key={link.name}
-              onClick={() => scrollToSection(link.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 animate-fade-in ${
-                activeSection === link.id && location.pathname === "/"
-                  ? "text-primary bg-accent"
-                  : "text-muted-foreground hover:text-primary hover:bg-muted"
-              }`}
+              to={link.href}
+              onClick={() => handleNavClick(link.href)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-muted-foreground hover:text-primary hover:bg-background/80 transition-all duration-300 text-sm font-medium animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <link.icon size={16} />
               {link.name}
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -112,19 +86,16 @@ const Navbar = () => {
       >
         <div className="container py-4 flex flex-col gap-2">
           {navLinks.map((link, index) => (
-            <button
+            <Link
               key={link.name}
-              onClick={() => scrollToSection(link.id)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 animate-slide-in-left ${
-                activeSection === link.id && location.pathname === "/"
-                  ? "text-primary bg-accent font-medium"
-                  : "text-muted-foreground hover:text-primary hover:bg-muted"
-              }`}
+              to={link.href}
+              onClick={() => handleNavClick(link.href)}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-300 animate-slide-in-left"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <link.icon size={18} />
               {link.name}
-            </button>
+            </Link>
           ))}
         </div>
       </div>

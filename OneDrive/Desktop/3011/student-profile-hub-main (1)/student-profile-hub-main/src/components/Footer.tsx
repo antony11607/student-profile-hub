@@ -1,8 +1,8 @@
 import { Github, Linkedin, Twitter, Instagram } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/antony11607", target: "__blank", rel: "noopener noreferrer", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/antony-xavier-jm-117ba3344" ,label: "LinkedIn" },
+  { icon: Github, href: "#", label: "GitHub" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Instagram, href: "#", label: "Instagram" },
 ];
@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <p className="font-semibold text-lg text-gradient mb-1"></p>
+            <p className="font-semibold text-lg text-gradient mb-1">Portfolio</p>
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} All rights reserved.
             </p>
