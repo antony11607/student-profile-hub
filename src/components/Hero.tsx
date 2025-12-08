@@ -1,4 +1,4 @@
-import { ArrowRight, Download, Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -6,86 +6,68 @@ const Hero = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="home" className="min-h-screen hero-gradient flex items-center justify-center pt-16 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-foreground/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-foreground/5 rounded-full blur-3xl" />
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden">
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
       </div>
 
-      <div className="container py-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content - Text */}
           <div className="text-center lg:text-left order-2 lg:order-1">
-            {/* Name Badge */}
+            {/* Status Badge */}
             <div 
-              className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 animate-slide-in-left"
-              style={{ animationDelay: "0.1s" }}
+              className="inline-flex items-center gap-2 bg-secondary/10 text-secondary rounded-full px-4 py-1.5 mb-8 animate-fade-in"
             >
-              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-              <span className="text-primary-foreground/90 text-sm font-medium">Available for Internships</span>
+              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse-soft" />
+              <span className="text-sm font-medium">Available for Internships</span>
             </div>
 
             <p 
-              className="text-primary-foreground/80 text-sm md:text-base uppercase tracking-widest mb-4 animate-slide-in-left" 
-              style={{ animationDelay: "0.2s" }}
+              className="text-muted-foreground text-sm uppercase tracking-[0.2em] mb-4 animate-fade-in font-mono" 
+              style={{ animationDelay: "0.1s" }}
             >
               Hello, I'm
             </p>
             
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4 animate-slide-in-left" 
-              style={{ animationDelay: "0.3s" }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in tracking-tight" 
+              style={{ animationDelay: "0.15s" }}
             >
-              Antony Xavier J M
+              <span className="gradient-text">Antony Xavier</span>
             </h1>
             
             <h2 
-              className="text-xl md:text-2xl text-secondary font-semibold mb-6 animate-slide-in-left" 
-              style={{ animationDelay: "0.4s" }}
+              className="text-xl md:text-2xl text-muted-foreground font-medium mb-6 animate-fade-in" 
+              style={{ animationDelay: "0.2s" }}
             >
-              B.Tech CSE Student | Aspiring Developer
+              B.Tech CSE Student & Aspiring Developer
             </h2>
             
             <p 
-              className="text-primary-foreground/80 text-lg md:text-xl mb-8 max-w-xl mx-auto lg:mx-0 animate-slide-in-left" 
-              style={{ animationDelay: "0.5s" }}
+              className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0 animate-fade-in" 
+              style={{ animationDelay: "0.25s" }}
             >
-              A passionate Computer Science student with a keen interest in web development, 
-              problem-solving, and building innovative solutions.
+              A passionate Computer Science student focused on building clean, user-friendly web applications with modern technologies.
             </p>
-
-            {/* Contact Info */}
-            <div 
-              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-6 animate-slide-in-left" 
-              style={{ animationDelay: "0.6s" }}
-            >
-              <div className="flex items-center gap-2 text-primary-foreground/80 text-sm bg-primary-foreground/10 rounded-full px-4 py-2">
-                <Mail size={14} />
-                <span>antonyxavier@email.com</span>
-              </div>
-              <div className="flex items-center gap-2 text-primary-foreground/80 text-sm bg-primary-foreground/10 rounded-full px-4 py-2">
-                <Phone size={14} />
-                <span>+91 98765 43210</span>
-              </div>
-              <div className="flex items-center gap-2 text-primary-foreground/80 text-sm bg-primary-foreground/10 rounded-full px-4 py-2">
-                <MapPin size={14} />
-                <span>Chennai, India</span>
-              </div>
-            </div>
 
             {/* Social Links */}
             <div 
-              className="flex justify-center lg:justify-start gap-3 mb-8 animate-slide-in-left" 
-              style={{ animationDelay: "0.65s" }}
+              className="flex justify-center lg:justify-start gap-3 mb-8 animate-fade-in" 
+              style={{ animationDelay: "0.3s" }}
             >
               <a 
                 href="https://github.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110"
+                className="w-11 h-11 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
               >
                 <Github size={20} />
               </a>
@@ -93,24 +75,30 @@ const Hero = () => {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110"
+                className="w-11 h-11 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
               >
                 <Linkedin size={20} />
+              </a>
+              <a 
+                href="mailto:antonyxavier@email.com" 
+                className="w-11 h-11 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
+              >
+                <Mail size={20} />
               </a>
             </div>
 
             <div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-in-left" 
-              style={{ animationDelay: "0.7s" }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in" 
+              style={{ animationDelay: "0.35s" }}
             >
-              <Button variant="hero" size="lg" onClick={scrollToProjects}>
+              <Button size="lg" onClick={scrollToProjects} className="group">
                 View Projects
-                <ArrowRight className="ml-2" size={18} />
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
               </Button>
               <Button 
                 variant="outline" 
-                size="lg" 
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                size="lg"
+                onClick={scrollToContact}
               >
                 <Download className="mr-2" size={18} />
                 Download CV
@@ -121,18 +109,14 @@ const Hero = () => {
           {/* Right Content - Avatar */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div 
-              className="relative animate-slide-in-right" 
-              style={{ animationDelay: "0.3s" }}
+              className="relative animate-fade-in" 
+              style={{ animationDelay: "0.2s" }}
             >
-              {/* Decorative rings */}
-              <div className="absolute inset-0 rounded-full border-2 border-primary-foreground/20 animate-pulse scale-110" />
-              <div className="absolute inset-0 rounded-full border-2 border-secondary/30 animate-pulse scale-125" style={{ animationDelay: "0.5s" }} />
-              
               {/* Avatar container */}
-              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-primary-foreground/10 backdrop-blur-sm border-4 border-primary-foreground/30 flex items-center justify-center overflow-hidden shadow-2xl">
-                {/* Placeholder for avatar - replace src with actual image */}
-                <div className="w-full h-full bg-gradient-to-br from-primary-foreground/20 to-secondary/20 flex items-center justify-center">
-                  <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary-foreground/50">AX</span>
+              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-accent overflow-hidden border border-border shadow-glow">
+                {/* Placeholder for avatar */}
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-background">
+                  <span className="text-7xl md:text-8xl lg:text-9xl font-bold text-muted-foreground/30">AX</span>
                 </div>
                 {/* Uncomment and add your image:
                 <img 
@@ -145,14 +129,13 @@ const Hero = () => {
 
               {/* Floating badges */}
               <div 
-                className="absolute -right-2 top-1/4 bg-card text-foreground px-4 py-2 rounded-full shadow-lg animate-fade-in border border-border"
-                style={{ animationDelay: "0.8s" }}
+                className="absolute -right-4 top-1/4 bg-card px-4 py-2 rounded-2xl shadow-card-hover border border-border animate-float"
               >
-                <span className="text-sm font-semibold">CGPA: 9.14</span>
+                <span className="text-sm font-bold text-foreground">CGPA: 9.14</span>
               </div>
               <div 
-                className="absolute -left-4 bottom-1/4 bg-secondary text-secondary-foreground px-4 py-2 rounded-full shadow-lg animate-fade-in"
-                style={{ animationDelay: "0.9s" }}
+                className="absolute -left-4 bottom-1/4 bg-primary text-primary-foreground px-4 py-2 rounded-2xl shadow-button animate-float"
+                style={{ animationDelay: "0.5s" }}
               >
                 <span className="text-sm font-semibold">B.Tech CSE</span>
               </div>

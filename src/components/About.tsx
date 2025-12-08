@@ -27,14 +27,13 @@ const highlights = [
   },
 ];
 
-// Tech logos with CDN URLs
 const techLogos = [
   { name: "React", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
   { name: "TypeScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
   { name: "JavaScript", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
   { name: "HTML5", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
   { name: "CSS3", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-  { name: "Tailwind CSS", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Tailwind", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
   { name: "Node.js", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
   { name: "GitHub", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
   { name: "Redux", url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
@@ -43,49 +42,49 @@ const techLogos = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id="about" className="py-24 bg-muted/30">
       <div className="container">
         <h2 className="section-heading animate-fade-in">About Me</h2>
         <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          I'm Antony Xavier, a dedicated B.Tech CSE student passionate about building web applications
-          and solving problems through code. Currently focusing on frontend development and expanding my skills.
+          I'm a dedicated B.Tech CSE student passionate about building web applications
+          and solving problems through clean, efficient code.
         </p>
 
         {/* Highlights Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
           {highlights.map((item, index) => (
             <div
               key={item.title}
-              className="bg-card rounded-2xl p-6 card-hover animate-fade-in"
+              className="group bg-card rounded-2xl p-8 card-hover border border-border animate-fade-in"
               style={{ animationDelay: `${(index + 1) * 0.1}s` }}
             >
-              <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-4">
-                <item.icon className="text-accent-foreground" size={28} />
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
+                <item.icon className="text-primary" size={26} />
               </div>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-muted-foreground text-sm">{item.description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Tech Stack Logos */}
-        <div className="bg-card rounded-2xl p-8 mb-8 card-hover animate-fade-in" style={{ animationDelay: "0.4s" }}>
-          <h3 className="text-xl font-semibold mb-6 text-center">Technologies & Tools</h3>
-          <div className="flex flex-wrap justify-center gap-6">
+        {/* Tech Stack */}
+        <div className="bg-card rounded-3xl p-8 md:p-10 border border-border card-hover animate-fade-in mb-8" style={{ animationDelay: "0.4s" }}>
+          <h3 className="text-xl font-semibold mb-8 text-center">Technologies I Work With</h3>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {techLogos.map((tech, index) => (
               <div
                 key={tech.name}
-                className="group flex flex-col items-center gap-2 animate-fade-in"
-                style={{ animationDelay: `${(index + 5) * 0.05}s` }}
+                className="group flex flex-col items-center gap-3"
+                style={{ animationDelay: `${(index + 5) * 0.03}s` }}
               >
-                <div className="w-16 h-16 p-3 rounded-xl bg-muted flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:shadow-lg">
+                <div className="w-16 h-16 md:w-20 md:h-20 p-4 rounded-2xl bg-muted/50 flex items-center justify-center transition-all duration-500 group-hover:bg-accent group-hover:scale-110">
                   <img
                     src={tech.url}
                     alt={tech.name}
                     className="w-full h-full object-contain tech-logo"
                   />
                 </div>
-                <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-300 font-medium">
                   {tech.name}
                 </span>
               </div>
@@ -94,18 +93,18 @@ const About = () => {
         </div>
 
         {/* Skills Progress */}
-        <div className="bg-card rounded-2xl p-8 card-hover animate-fade-in" style={{ animationDelay: "0.5s" }}>
-          <h3 className="text-xl font-semibold mb-6">Technical Proficiency</h3>
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-card rounded-3xl p-8 md:p-10 border border-border card-hover animate-fade-in" style={{ animationDelay: "0.5s" }}>
+          <h3 className="text-xl font-semibold mb-8">Technical Proficiency</h3>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
             {skills.map((skill, index) => (
-              <div key={skill.name} className="animate-fade-in" style={{ animationDelay: `${(index + 6) * 0.1}s` }}>
+              <div key={skill.name} style={{ animationDelay: `${(index + 6) * 0.08}s` }}>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-medium">{skill.name}</span>
-                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                  <span className="text-sm text-muted-foreground font-mono">{skill.level}%</span>
                 </div>
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-primary rounded-full transition-all duration-1000 ease-out"
+                    className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-1000 ease-out"
                     style={{ width: `${skill.level}%` }}
                   />
                 </div>
