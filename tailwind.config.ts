@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['Fira Code', 'JetBrains Mono', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,14 +51,32 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // VS Code specific colors
+        editor: {
+          bg: "hsl(var(--editor-bg))",
+          line: "hsl(var(--editor-line))",
+        },
+        sidebar: {
+          bg: "hsl(var(--sidebar-bg))",
+        },
+        syntax: {
+          keyword: "hsl(var(--syntax-keyword))",
+          string: "hsl(var(--syntax-string))",
+          function: "hsl(var(--syntax-function))",
+          comment: "hsl(var(--syntax-comment))",
+          variable: "hsl(var(--syntax-variable))",
+        },
+        terminal: {
+          green: "hsl(var(--terminal-green))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
         xl: "calc(var(--radius) + 4px)",
-        "2xl": "1rem",
-        "3xl": "1.5rem",
+        "2xl": "0.75rem",
+        "3xl": "1rem",
       },
       keyframes: {
         "accordion-down": {
@@ -91,11 +109,15 @@ export default {
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-6px)" },
         },
         "pulse-soft": {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.7" },
+          "50%": { opacity: "0.5" },
+        },
+        "typing": {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
         },
       },
       animation: {
@@ -108,12 +130,14 @@ export default {
         "scale-in": "scale-in 0.5s ease-out forwards",
         "float": "float 3s ease-in-out infinite",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
+        "typing": "typing 2s steps(20, end)",
       },
       boxShadow: {
         'card': 'var(--card-shadow)',
         'card-hover': 'var(--card-shadow-hover)',
         'button': 'var(--button-shadow)',
         'glow': 'var(--glow)',
+        'editor': '0 0 0 1px hsl(var(--border)), 0 4px 20px hsl(0 0% 0% / 0.15)',
       },
     },
   },

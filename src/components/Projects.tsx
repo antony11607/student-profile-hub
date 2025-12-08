@@ -1,8 +1,7 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Folder } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
-import Footer from "./Footer";
 
 const techLogoMap: Record<string, string> = {
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -23,34 +22,49 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24">
       <div className="container">
-        <h2 className="section-heading animate-fade-in">Featured Projects</h2>
+        {/* Section header with code comment style */}
+        <p className="text-center text-syntax-comment font-mono text-sm mb-2 animate-fade-in">
+          {"// Section: Projects"}
+        </p>
+        <h2 className="section-heading animate-fade-in">
+          <span className="text-syntax-function">getProjects</span>
+          <span className="text-muted-foreground">()</span>
+        </h2>
         <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>
           A collection of projects showcasing my journey in web development and programming.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-card rounded-2xl border border-border card-hover animate-fade-in overflow-hidden"
+              className="group bg-card rounded-lg border border-border card-hover animate-fade-in overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Card Header */}
-              <div className="p-6 pb-4">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground bg-muted px-3 py-1.5 rounded-full">
+              {/* Card Header - Editor tab style */}
+              <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border">
+                <Folder size={14} className="text-primary" />
+                <span className="text-xs font-mono text-muted-foreground truncate flex-1">
+                  {project.title.toLowerCase().replace(/\s+/g, '-')}/
+                </span>
+                <span className={`text-xs font-mono px-2 py-0.5 rounded ${
+                  project.status === 'Completed' 
+                    ? 'bg-secondary/20 text-secondary' 
+                    : 'bg-syntax-function/20 text-syntax-function'
+                }`}>
+                  {project.status === 'Completed' ? '✓' : '○'}
+                </span>
+              </div>
+
+              {/* Card Content */}
+              <div className="p-5">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground bg-muted px-2 py-1 rounded border border-border">
                     {project.category}
-                  </span>
-                  <span className={`text-xs font-medium px-3 py-1.5 rounded-full ${
-                    project.status === 'Completed' 
-                      ? 'bg-secondary/15 text-secondary' 
-                      : 'bg-orange-500/15 text-orange-600'
-                  }`}>
-                    {project.status}
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-lg font-mono font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-4">
@@ -58,11 +72,11 @@ const Projects = () => {
                 </p>
 
                 {/* Tech logos */}
-                <div className="flex gap-2 mb-4">
+                <div className="flex gap-1.5 mb-4">
                   {project.tags.slice(0, 4).map((tag) => (
                     <div
                       key={tag}
-                      className="w-8 h-8 p-1.5 rounded-lg bg-muted/50 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-accent"
+                      className="w-7 h-7 p-1.5 rounded bg-muted/50 border border-border flex items-center justify-center transition-all duration-300 hover:scale-110 hover:border-primary"
                       title={tag}
                     >
                       {techLogoMap[tag] ? (
@@ -72,7 +86,7 @@ const Projects = () => {
                           className="w-full h-full object-contain"
                         />
                       ) : (
-                        <span className="text-xs font-medium text-muted-foreground">{tag.charAt(0)}</span>
+                        <span className="text-xs font-mono text-muted-foreground">{tag.charAt(0)}</span>
                       )}
                     </div>
                   ))}
@@ -80,27 +94,29 @@ const Projects = () => {
               </div>
 
               {/* Card Footer */}
-              <div className="px-6 py-4 border-t border-border bg-muted/20 flex items-center justify-between">
+              <div className="px-5 py-3 border-t border-border bg-muted/30 flex items-center justify-between">
                 <div className="flex gap-1">
                   {project.github && (
-                    <Button variant="ghost" size="sm" className="h-9 px-3 hover:bg-muted" asChild>
+                    <Button variant="ghost" size="sm" className="h-8 px-2 hover:bg-muted font-mono text-xs" asChild>
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github size={16} />
+                        <Github size={14} className="mr-1" />
+                        repo
                       </a>
                     </Button>
                   )}
                   {project.demo && (
-                    <Button variant="ghost" size="sm" className="h-9 px-3 hover:bg-muted" asChild>
+                    <Button variant="ghost" size="sm" className="h-8 px-2 hover:bg-muted font-mono text-xs" asChild>
                       <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink size={16} />
+                        <ExternalLink size={14} className="mr-1" />
+                        demo
                       </a>
                     </Button>
                   )}
                 </div>
                 <Link to={`/projects/${project.id}`}>
-                  <Button variant="ghost" size="sm" className="h-9 group/btn hover:bg-accent hover:text-primary">
-                    Details
-                    <ArrowRight size={14} className="ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
+                  <Button variant="ghost" size="sm" className="h-8 group/btn hover:bg-accent hover:text-primary font-mono text-xs">
+                    details
+                    <ArrowRight size={12} className="ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
                   </Button>
                 </Link>
               </div>
