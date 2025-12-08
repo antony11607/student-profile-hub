@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Terminal } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
@@ -74,30 +74,36 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3 glass shadow-sm" : "py-5 bg-transparent"
+        scrolled ? "py-2 glass shadow-editor" : "py-4 bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between">
+        {/* Logo - VS Code style */}
         <button
           onClick={() => scrollToSection("home")}
           className="group flex items-center gap-3 animate-fade-in"
         >
-          <span className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold transition-transform duration-300 group-hover:scale-105">
-            AX
-          </span>
-          <span className="text-foreground font-semibold text-lg hidden sm:block">
-            Antony Xavier
-          </span>
+          <div className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center transition-all duration-300 group-hover:border-primary group-hover:shadow-glow">
+            <Terminal className="w-5 h-5 text-primary" />
+          </div>
+          <div className="hidden sm:flex flex-col">
+            <span className="text-foreground font-mono font-semibold text-sm">
+              antony<span className="text-primary">.dev</span>
+            </span>
+            <span className="text-muted-foreground text-xs font-mono">~/portfolio</span>
+          </div>
         </button>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Menu - Tab style */}
+        <div className="hidden md:flex items-center bg-card border border-border rounded-lg p-1">
           {navLinks.map((link, index) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 animate-fade-in ${
-                activeSection === link.id ? "text-primary bg-accent" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              className={`px-4 py-2 rounded-md text-sm font-mono transition-all duration-200 animate-fade-in ${
+                activeSection === link.id 
+                  ? "text-primary-foreground bg-primary shadow-button" 
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
               style={{ animationDelay: `${index * 0.05}s` }}
             >
@@ -109,29 +115,35 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-foreground rounded-xl hover:bg-muted transition-colors"
+          className="md:hidden p-2 text-foreground rounded-lg border border-border bg-card hover:bg-muted transition-colors"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Terminal style */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 glass border-t border-border overflow-hidden transition-all duration-300 ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-card border-t border-border overflow-hidden transition-all duration-300 ${
           isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="container py-4 flex flex-col gap-1">
+        <div className="container py-2">
+          <div className="text-xs text-muted-foreground font-mono mb-2 px-4">
+            <span className="text-secondary">$</span> navigate --to
+          </div>
           {navLinks.map((link, index) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.id)}
-              className={`px-4 py-3 rounded-xl text-left transition-all duration-300 ${
-                activeSection === link.id ? "text-primary bg-accent font-medium" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              className={`w-full px-4 py-3 text-left font-mono text-sm transition-all duration-200 flex items-center gap-2 ${
+                activeSection === link.id 
+                  ? "text-primary bg-accent border-l-2 border-primary" 
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              {link.name}
+              <span className="text-muted-foreground">→</span>
+              {link.name.toLowerCase()}
             </button>
           ))}
         </div>
