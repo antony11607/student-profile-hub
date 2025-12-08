@@ -23,38 +23,37 @@ const internships = [
 
 const Internships = () => {
   return (
-    <section id="internships" className="py-20 bg-muted/30">
+    <section id="internships" className="py-24 bg-muted/30">
       <div className="container">
-        <h2 className="section-heading animate-fade-in">Internships</h2>
+        <h2 className="section-heading animate-fade-in">Experience</h2>
         <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          My hands-on experience through internships has helped me apply classroom knowledge
-          to real-world projects and develop professional skills.
+          Hands-on experience through internships that helped me apply academic knowledge to real-world projects.
         </p>
 
         <div className="max-w-3xl mx-auto space-y-6">
           {internships.map((internship, index) => (
             <div
               key={internship.company}
-              className="bg-card rounded-2xl p-6 md:p-8 card-hover animate-fade-in relative overflow-hidden"
+              className="bg-card rounded-2xl p-6 md:p-8 border border-border card-hover animate-fade-in relative"
               style={{ animationDelay: `${(index + 1) * 0.15}s` }}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-8 w-1 h-12 bg-primary rounded-r-full" />
+              {/* Timeline indicator */}
+              <div className="absolute left-0 top-8 w-1 h-16 bg-gradient-to-b from-primary to-primary/30 rounded-r-full" />
 
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
                 <div>
-                  <p className="text-xl font-semibold text-primary">
+                  <h3 className="text-xl font-semibold text-foreground mb-1">
                     {internship.role}
-                  </p>
-                  <div className="flex items-center gap-2 text-muted-foreground mt-1">
+                  </h3>
+                  <div className="flex items-center gap-2 text-primary">
                     <Building2 size={16} />
                     <span className="font-medium">{internship.company}</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+                <div className="flex flex-col gap-1.5 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Calendar size={14} />
-                    <span>{internship.duration}</span>
+                    <span className="font-mono">{internship.duration}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin size={14} />
@@ -63,13 +62,13 @@ const Internships = () => {
                 </div>
               </div>
 
-              <p className="text-muted-foreground mb-4">{internship.description}</p>
+              <p className="text-muted-foreground leading-relaxed mb-5">{internship.description}</p>
 
               <div className="flex flex-wrap gap-2">
                 {internship.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 bg-accent text-accent-foreground rounded-full text-xs font-medium"
+                    className="px-3 py-1.5 bg-accent text-accent-foreground rounded-full text-xs font-medium"
                   >
                     {skill}
                   </span>
