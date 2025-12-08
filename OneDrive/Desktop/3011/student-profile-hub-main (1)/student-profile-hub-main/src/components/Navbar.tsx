@@ -3,11 +3,11 @@ import { Menu, X, Home, User, Briefcase, Building, Mail } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { name: "Home", href: "/#home", icon: Home },
-  { name: "About", href: "/#about", icon: User },
-  { name: "Projects", href: "/#projects", icon: Briefcase },
-  { name: "Internships", href: "/#internships", icon: Building },
-  { name: "Contact", href: "/#contact", icon: Mail },
+  { name: "Home", href: "/home", icon: Home },
+  { name: "About", href: "/about", icon: User },
+  { name: "Projects", href: "/projects", icon: Briefcase },
+  { name: "Internships", href: "/internships", icon: Building },
+  { name: "Contact", href: "/contact", icon: Mail },
 ];
 
 const Navbar = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-16">
         <Link
-          to="/"
+          to="/home"
           className="text-xl font-bold animate-fade-in flex items-center gap-2 bg-background px-4 py-2 rounded-full hover:bg-background/90 transition-all duration-300 shadow-sm"
         >
           <span className="w-8 h-8 rounded-full bg-background flex items-center justify-center text-primary text-sm font-bold border border-border">

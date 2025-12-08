@@ -67,7 +67,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-
+      
       <section className="py-16">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8">
@@ -179,7 +179,6 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 };
