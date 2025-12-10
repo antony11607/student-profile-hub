@@ -33,7 +33,7 @@ export const projects: Project[] = [
     ],
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion"],
     duration: "2 weeks",
-    status: "In progress",
+    status: "Completed",
     github: "https://github.com/antony11607/student-profile-hub",
     demo: "https://demo.com"
   },
