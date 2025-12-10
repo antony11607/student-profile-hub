@@ -109,7 +109,8 @@ const Projects = () => {
         </div>
       </div>
     </section>
+    
   );
 };
-  
+  <Footer/>
 export default Projects;
