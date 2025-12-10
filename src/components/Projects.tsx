@@ -21,7 +21,7 @@ const techLogoMap: Record<string, string> = {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="pb-24">
       <div className="container">
         <h2 className="section-heading animate-fade-in">Featured Projects</h2>
         <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>

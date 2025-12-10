@@ -41,21 +41,30 @@ const Contact = () => {
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
 
-    // Open the mail client
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    // Try opening Gmail first
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
-    // Optional toast feedback
+    const gmailWindow = window.open(gmailUrl, "_blank");
+
     toast({
       title: "Opening mail client...",
-      description: "Please complete your message in your mail app.",
+      description: "Please complete your message in your preferred mail app.",
     });
+
+    // Fallback if Gmail doesn’t open (e.g., blocked or non-Gmail user)
+    setTimeout(() => {
+      if (!gmailWindow || gmailWindow.closed || typeof gmailWindow.closed === "undefined") {
+        window.location.href = mailtoUrl;
+      }
+    }, 1500);
 
     // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact">
       <div className="container">
         <h2 className="section-heading animate-fade-in">Get In Touch</h2>
         <p
@@ -71,9 +80,7 @@ const Contact = () => {
             className="lg:col-span-2 space-y-4 animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            <h3 className="text-lg font-semibold mb-6">
-              Contact Information
-            </h3>
+            <h3 className="text-lg font-semibold mb-6">Contact Information</h3>
 
             {contactInfo.map((item) => (
               <div
@@ -123,10 +130,7 @@ const Contact = () => {
           >
             <div className="space-y-5">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Name
                 </label>
                 <input
@@ -142,10 +146,7 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
                   Email
                 </label>
                 <input

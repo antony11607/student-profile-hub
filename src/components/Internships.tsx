@@ -23,7 +23,7 @@ const internships = [
 
 const Internships = () => {
   return (
-    <section id="internships" className="py-24 bg-muted/30">
+    <section id="internships" className="pb-24 bg-muted/30">
       <div className="container">
         <h2 className="section-heading animate-fade-in">Internship</h2>
         <p

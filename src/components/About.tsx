@@ -43,7 +43,7 @@ const techLogos = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-muted/30">
+    <section id="about" className="pb-24 bg-muted/30">
       <div className="container">
         <h2 className="section-heading animate-fade-in">About Me</h2>
         <p className="section-subheading animate-fade-in" style={{ animationDelay: "0.1s" }}>
